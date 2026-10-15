@@ -14,6 +14,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: `${siteConfig.url}/projects/portfolio-site`,
+      lastModified: buildDate,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${siteConfig.url}/projects/sqli-detection`,
       lastModified: buildDate,
       changeFrequency: "yearly",

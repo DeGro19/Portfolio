@@ -20,6 +20,13 @@ type Project = {
     height: number;
     alt: string;
   };
+  // Full-width evidence shot, shown under the summary.
+  banner?: {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+  };
 };
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -48,6 +55,21 @@ export function ProjectCard({ project }: { project: Project }) {
           />
         )}
       </header>
+
+      {project.banner && (
+        // Light-background report image, so it keeps a white plate in dark
+        // mode rather than being inverted into something unreadable.
+        <div className="surface mt-6 overflow-hidden bg-white p-2">
+          <Image
+            src={project.banner.src}
+            alt={project.banner.alt}
+            width={project.banner.width}
+            height={project.banner.height}
+            sizes="(min-width: 768px) 40rem, 100vw"
+            className="h-auto w-full rounded"
+          />
+        </div>
+      )}
 
       <ul className="text-muted mt-6 space-y-2.5">
         {project.points.map((point) => (

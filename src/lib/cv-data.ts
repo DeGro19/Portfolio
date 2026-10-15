@@ -165,6 +165,37 @@ export const projects = [
     repo: "https://github.com/DeGro19/Enhancing-SQL-Injection-Vulnerability-Detection-in-Open-Source-Scanners-using-Payload-Fuzzing",
   },
   {
+    title: "Interactive CV Website",
+    subtitle: "This site, built from scratch",
+    summary:
+      "A portfolio built to demonstrate rather than describe: hardened response headers, a defended contact form, and every decision documented in the public repository.",
+    points: [
+      "Hardened HTTP response headers (CSP, HSTS, Permissions-Policy, Referrer-Policy, frame-ancestors, nosniff, COOP), scoring grade A on securityheaders.com",
+      "Contact form defended in three layers: a Zod schema shared by client and server, a honeypot that returns success rather than a validation error so bots get no signal, and rate limiting applied before validation",
+      "RFC 9116 security.txt served from a route handler so the canonical URL cannot drift from the site config",
+      "Statically prerendered with Partial Prerendering; live GitHub data cached for an hour to stay inside the unauthenticated rate limit and degrading to nothing rendered on failure",
+      "Accessibility baseline throughout: skip link, visible focus rings, prefers-reduced-motion honoured by every animation",
+      "14 Vitest tests and a GitHub Actions pipeline running lint, typecheck, test and build on every push",
+    ],
+    tech: [
+      "Next.js 16",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Zod",
+      "Vitest",
+      "GitHub Actions",
+      "Vercel",
+    ],
+    repo: "https://github.com/DeGro19/portfolio",
+    caseStudy: "/projects/portfolio-site",
+    banner: {
+      src: "/projects/portfolio/security-headers-scan.png",
+      width: 1104,
+      height: 447,
+      alt: "securityheaders.com report for this site showing grade A with six headers present",
+    },
+  },
+  {
     title: "Microsoft Azure Cloud Application",
     subtitle: "AZ-204 Developer Associate",
     summary:
