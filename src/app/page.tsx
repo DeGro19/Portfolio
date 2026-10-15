@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import {
   ArrowRight,
   Award,
@@ -6,6 +7,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import Image from "next/image";
+import { GithubRepos } from "@/components/github-repos";
 import { Pill } from "@/components/pill";
 import { ProjectCard } from "@/components/project-card";
 import { Reveal } from "@/components/reveal";
@@ -231,6 +233,10 @@ export default function HomePage() {
             </Reveal>
           ))}
         </div>
+
+        <Suspense fallback={null}>
+          <GithubRepos />
+        </Suspense>
       </Section>
     </>
   );

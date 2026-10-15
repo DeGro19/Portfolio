@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/header";
+import { JsonLd } from "@/components/json-ld";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/lib/site-config";
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="relative min-h-full">
+        <JsonLd />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <a
             href="#home"
