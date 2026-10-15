@@ -160,7 +160,8 @@ export const projects = [
       "Conducted comparative analysis exposing structural flaws in default OWASP ZAP payloads versus custom payloads",
       "Awarded Best Poster at Keele Town Hall; nominated Student of the Year 2025",
     ],
-    tech: ["Python", "OWASP ZAP", "WebGoat", "SQL", "DAST"],
+    tech: ["Python", "OWASP ZAP", "WebGoat", "Docker", "SQL", "DAST"],
+    caseStudy: "/projects/sqli-detection",
     repo: "https://github.com/DeGro19/Enhancing-SQL-Injection-Vulnerability-Detection-in-Open-Source-Scanners-using-Payload-Fuzzing",
   },
   {

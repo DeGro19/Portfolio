@@ -95,12 +95,94 @@ Hoisted to module scope so it is evaluated once at build time.
   `@icons-pack/react-simple-icons`. LinkedIn was removed from Simple Icons over
   trademark, so it currently uses a generic contact icon.
 
+## Security
+
+### CSP without nonces, and why
+
+A nonce-based CSP is stricter, but nonces must be generated per request, which
+forces dynamic rendering and is explicitly incompatible with Partial
+Prerendering. This site is statically prerendered, and React's hydration
+payload plus the next-themes pre-paint script are both inline, so `script-src`
+keeps `'unsafe-inline'`. Everything else is locked down: `default-src 'self'`,
+`object-src 'none'`, `frame-ancestors 'none'`, `base-uri 'self'`,
+`form-action 'self'`. `'unsafe-eval'` is added in development only, where
+React uses `eval` for better error stacks.
+
+The upgrade path is Next's experimental SRI support, which hashes scripts at
+build time and keeps static generation. Not adopted yet because it is
+experimental and the next-themes script is injected outside Next's control.
+
+### Contact form threat model
+
+Three independent layers, because any one of them alone is weak:
+
+1. **Validation** with a Zod schema shared by the client and the route. The
+   client copy is a convenience; the server re-validates because anything a
+   browser sends can be forged.
+2. **A honeypot field**, hidden from users and assistive tech. Critically, the
+   schema _accepts_ a filled honeypot rather than rejecting it: returning a
+   400 would tell a bot the field is a trap. The route returns `{ ok: true }`
+   and discards the message. (This was caught by testing the endpoint with
+   curl, not by reading the code.)
+3. **Rate limiting** before validation, so malformed floods are also counted.
+   Fixed window, 5 requests per 15 minutes per IP.
+
+Known limitation: the limiter is in-process memory, so on serverless the limit
+is per instance rather than global. Adequate for a portfolio contact form;
+anything with real abuse exposure needs shared state in Redis or Vercel KV.
+
+Failure responses never distinguish "no API key configured" from "upstream
+rejected it" — the visitor sees one message and the detail goes to the server
+log.
+
+### GitHub API rate limits
+
+Unauthenticated requests are capped at 60 per hour per IP, so the repository
+list is cached for an hour via `cacheLife("hours")`. Without that, a page
+getting any traffic would exhaust the quota in minutes and start rendering an
+empty list. All failures return an empty array, so a GitHub outage degrades to
+the section not rendering rather than a broken page.
+
+## Cache Components constraints hit along the way
+
+Next 16's Cache Components treats several things as dynamic that are easy to
+write by accident:
+
+- `new Date()` during render. Hoisted to module scope in the footer and
+  sitemap so it is evaluated once at build.
+- Filesystem reads. `readdir`/`readFile` for posts live in `"use cache"`
+  functions. Only the raw file _string_ is cached, never the compiled MDX,
+  since React elements have no business crossing a cache boundary.
+- `generateStaticParams` must return at least one entry. With a content
+  directory holding only drafts it would return none, so slug collection
+  deliberately ignores draft status and `getPost` does the filtering instead.
+  That also means drafts 404 in production even if the URL is guessed, while
+  staying previewable in development.
+- Route handlers cannot return a cached `Response`; the body string is cached
+  and the `Response` constructed outside.
+
 ## Known gaps / next up
 
-- [ ] Project content as MDX, with a detail page per project
-- [ ] Live GitHub stats via the API (cache the response; handle rate limits)
-- [ ] Contact form: validation, rate limiting, spam protection
-- [ ] Tests (Vitest + Testing Library) and a GitHub Actions workflow
-- [ ] Lighthouse pass, OG images, sitemap, custom domain
+- [ ] Deploy to Vercel and point a custom domain at it
+- [ ] Set RESEND_API_KEY so the contact form can actually deliver
+- [ ] Write a real post; content/posts/hello-world.mdx is a draft template
+- [ ] Lighthouse and axe pass once deployed
+- [ ] Reconcile the dissertation headline figure (see below)
+
+## Open question: which dissertation figure is correct?
+
+The CV says "+9% improvement in detection rate". The repository README says
+"+218% increase in detected SQLi vulnerabilities". Both appear to be true but
+measure different things:
+
+- **+218%** is the detection _count_: 388 reflected detections against 122
+  from the default payload set.
+- **~+9%** matches the payload _reflection rate_: 27.2% against 18.7%, which
+  is 8.5 percentage points, not a 9% relative improvement.
+
+The site currently leads with the counts. The CV should probably be updated to
+match, and "detection rate" relabelled, because an interviewer comparing the
+two documents will notice.
+
 - [ ] `npm audit`: remaining advisories are all in the dev-only ESLint
       toolchain (`micromatch`/`braces`), not in anything shipped to the browser

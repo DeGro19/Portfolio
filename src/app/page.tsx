@@ -7,6 +7,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import Image from "next/image";
+import { ContactForm } from "@/components/contact-form";
 import { GithubRepos } from "@/components/github-repos";
 import { Pill } from "@/components/pill";
 import { ProjectCard } from "@/components/project-card";
@@ -237,6 +238,21 @@ export default function HomePage() {
         <Suspense fallback={null}>
           <GithubRepos />
         </Suspense>
+      </Section>
+
+      <Section id="contact" title="Contact" index={4}>
+        <p className="text-muted mb-8 text-lg text-pretty">
+          Hiring, collaborating, or just want to talk about scanner internals?
+          Send a message below, or email me directly at{" "}
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="text-accent hover:underline"
+          >
+            {siteConfig.email}
+          </a>
+          .
+        </p>
+        <ContactForm />
       </Section>
     </>
   );

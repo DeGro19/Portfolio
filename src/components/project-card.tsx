@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, Award } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { Pill } from "./pill";
@@ -12,6 +13,7 @@ type Project = {
   repo?: string;
   demo?: string;
   certificate?: string;
+  caseStudy?: string;
   image?: {
     src: string;
     width: number;
@@ -21,7 +23,8 @@ type Project = {
 };
 
 export function ProjectCard({ project }: { project: Project }) {
-  const hasLinks = project.repo || project.demo || project.certificate;
+  const hasLinks =
+    project.caseStudy || project.repo || project.demo || project.certificate;
 
   return (
     <article className="surface hover:border-accent/40 p-6 transition-[transform,border-color,box-shadow] duration-300 motion-safe:hover:-translate-y-1 sm:p-8">
@@ -68,6 +71,15 @@ export function ProjectCard({ project }: { project: Project }) {
 
       {hasLinks && (
         <footer className="mt-7 flex flex-wrap gap-3">
+          {project.caseStudy && (
+            <Link
+              href={project.caseStudy}
+              className="bg-accent inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+            >
+              Read the write-up
+              <ArrowUpRight className="size-4" aria-hidden />
+            </Link>
+          )}
           {project.repo && (
             <a
               href={project.repo}

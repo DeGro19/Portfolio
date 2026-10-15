@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/header";
 import { JsonLd } from "@/components/json-ld";
@@ -72,6 +73,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <p>
                 © {buildYear} {siteConfig.name}
               </p>
+              <nav aria-label="Footer" className="flex items-center gap-5">
+                <Link
+                  href="/writing"
+                  className="hover:text-accent transition-colors"
+                >
+                  Writing
+                </Link>
+                <a
+                  href="/.well-known/security.txt"
+                  className="hover:text-accent transition-colors"
+                >
+                  security.txt
+                </a>
+              </nav>
               <p>Built with Next.js & Tailwind CSS</p>
             </div>
           </footer>
