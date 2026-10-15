@@ -4,6 +4,50 @@
    media-query strategy and key the dark variant off that class instead. */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* A custom property normally flips instantly. Registering it with a typed
+   syntax makes it interpolatable, which lets the theme swap animate on a
+   single element instead of on all 590 nodes in the page. */
+@property --background {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f7f7f8;
+}
+@property --foreground {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0a0a0c;
+}
+@property --muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #52525b;
+}
+@property --card {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+@property --border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e3e3e8;
+}
+@property --accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #cf2e22;
+}
+@property --accent-soft {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e0693f;
+}
+@property --dot {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #c6c6d0;
+}
+
 :root {
   --background: #f7f7f8;
   --foreground: #0a0a0c;
@@ -60,19 +104,18 @@
     font-family: var(--font-sans), system-ui, sans-serif;
   }
 
-  /* Cross-fade every themed colour instead of snapping between palettes.
-     Lives in the base layer so any element carrying its own Tailwind
-     `transition-*` utility still wins, so hovers stay snappy at 150ms while
-     the theme change itself eases over 400ms. */
+  /* Cross-fade the theme by animating the eight colour variables on <html>
+     rather than transitioning every element. Descendants inherit the
+     interpolated values, so the whole page follows from one transition
+     instead of 590 competing ones. Unregistered properties built from these,
+     such as --glow, are substituted at use time and follow along for free. */
   @media (prefers-reduced-motion: no-preference) {
-    *,
-    *::before,
-    *::after {
+    html {
       transition-property:
-        background-color, border-color, color, fill, stroke, box-shadow,
-        outline-color;
-      transition-duration: 400ms;
-      transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+        --background, --foreground, --muted, --card, --border, --accent,
+        --accent-soft, --dot;
+      transition-duration: 220ms;
+      transition-timing-function: ease-out;
     }
   }
 
