@@ -1,0 +1,42 @@
+---
+title: "Template: how I locked down this site's HTTP headers"
+description: "A starter draft showing the post format. Rewrite it or delete the file; drafts never appear in a production build."
+date: "2026-10-15"
+tags: ["Web Security", "Headers"]
+draft: true
+---
+
+This file is a template. It is marked `draft: true`, so it shows up when you
+run `npm run dev` and is filtered out of production builds. Edit it, rename
+it, or delete it.
+
+## Why frontmatter matters
+
+Everything above the `---` is frontmatter. `title`, `description` and `date`
+are required; `tags` and `draft` are optional. The listing page sorts by
+`date`, newest first.
+
+## What a good post looks like
+
+Pick one thing you actually did and explain the decision, not just the steps:
+
+- What was the problem?
+- What did you try that did not work?
+- What did you choose in the end, and what did it cost?
+
+That last question is the one most write-ups skip, and the one interviewers
+care about.
+
+## Code blocks work
+
+```ts
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'none'",
+].join("; ");
+```
+
+Ideas worth writing up: a TryHackMe room that took you somewhere unexpected,
+why ZAP's default payloads miss blind injection, or what AZ-204 does not
+teach you about securing a real Azure tenant.
