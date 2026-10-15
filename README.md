@@ -37,8 +37,6 @@ checked.
 | Email     | Resend                  | Contact form delivery                                                                                                   |
 | Hosting   | Vercel                  | Static prerendering with Partial Prerendering                                                                           |
 
-Every non-obvious decision, including the ones that turned out to be wrong, is
-written up in **[ENGINEERING.md](./ENGINEERING.md)**.
 
 ---
 
@@ -77,7 +75,6 @@ Cross-Origin-Opener-Policy
 ![securityheaders.com report showing grade A](./public/projects/portfolio/security-headers-scan.png)
 
 > Scan it yourself at [securityheaders.com](https://securityheaders.com).
-> The grade is not a claim, it is reproducible.
 
 ### Why A and not A+
 
@@ -222,7 +219,7 @@ the precise reason CI is worth having on a one-person project.
 
 ## Author
 
-**Deon Grover**, cybersecurity graduate, London
+**Deon Grover**
 
 [Portfolio](https://portfolio-nine-roan-3b8pahbp36.vercel.app) ·
 [LinkedIn](https://www.linkedin.com/in/deon-grover-447273291) ·
