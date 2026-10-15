@@ -186,7 +186,7 @@ export const projects = [
       "GitHub Actions",
       "Vercel",
     ],
-    repo: "https://github.com/DeGro19/portfolio",
+    repo: "https://github.com/DeGro19/Portfolio",
     caseStudy: "/projects/portfolio-site",
     banner: {
       src: "/projects/portfolio/security-headers-scan.png",

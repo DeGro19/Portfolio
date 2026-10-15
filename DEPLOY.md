@@ -10,7 +10,7 @@ Create an empty repository (no README, no .gitignore) at
 
 ```bash
 cd C:\Users\User\Projects\portfolio
-git remote add origin https://github.com/DeGro19/portfolio.git
+git remote add origin https://github.com/DeGro19/Portfolio.git
 git push -u origin build/portfolio
 ```
 
