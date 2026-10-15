@@ -38,9 +38,8 @@ export default async function WritingIndexPage() {
 
       {posts.length === 0 ? (
         <p className="surface text-muted mt-12 p-6 text-pretty">
-          Nothing published yet. Drop an <code className="font-mono">.mdx</code>{" "}
-          file into <code className="font-mono">content/posts/</code> and it
-          will appear here.
+          Nothing published here yet. Write-ups on offensive security tooling
+          and cloud security are on the way.
         </p>
       ) : (
         <ul className="mt-12 space-y-4">

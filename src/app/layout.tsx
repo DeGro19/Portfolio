@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { JsonLd } from "@/components/json-ld";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { ThemeProvider } from "@/components/theme-provider";
+import { getPosts } from "@/lib/posts";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -34,7 +35,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  // No point advertising an empty section; the link appears with the first post.
+  const hasPosts = (await getPosts()).length > 0;
   return (
     // next-themes sets the class on <html> before paint, which the server
     // render can't predict, so this tells React not to warn about it.
@@ -74,12 +77,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 © {buildYear} {siteConfig.name}
               </p>
               <nav aria-label="Footer" className="flex items-center gap-5">
-                <Link
-                  href="/writing"
-                  className="hover:text-accent transition-colors"
-                >
-                  Writing
-                </Link>
+                {hasPosts && (
+                  <Link
+                    href="/writing"
+                    className="hover:text-accent transition-colors"
+                  >
+                    Writing
+                  </Link>
+                )}
                 <a
                   href="/.well-known/security.txt"
                   className="hover:text-accent transition-colors"
