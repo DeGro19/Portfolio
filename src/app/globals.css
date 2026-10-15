@@ -119,6 +119,52 @@
     }
   }
 
+  /* The platform scrollbar is heavy and sits outside the palette. Thinning
+     and theming it keeps the affordance, which tells a reader how long the
+     page is and lets them drag, while losing the clunky default chrome.
+     scrollbar-gutter keeps the width reserved so nothing shifts sideways
+     when a short page becomes a long one. */
+  html {
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  /* Older WebKit ignores scrollbar-width, so give it the same treatment. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 999px;
+    background-color: var(--border);
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--muted);
+  }
+
+  /* The page scrollbar is hidden because the progress bar pinned to the top
+     of the viewport already reports position. Scrolling itself is untouched:
+     wheel, keyboard, touch and screen readers all behave normally. The one
+     thing lost is dragging the thumb to scrub, which is the accepted cost.
+     Deliberately scoped to the page: scrollable children such as wide code
+     blocks keep their own scrollbars, since nothing else signals those. */
+  html {
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Smooth anchor scrolling for the nav, but never against a user who has
      asked the OS for less motion. */
   html {
