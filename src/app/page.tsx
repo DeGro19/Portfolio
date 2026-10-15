@@ -241,17 +241,6 @@ export default function HomePage() {
       </Section>
 
       <Section id="contact" title="Contact" index={4}>
-        <p className="text-muted mb-8 text-lg text-pretty">
-          Hiring, collaborating, or just want to talk about scanner internals?
-          Send a message below, or email me directly at{" "}
-          <a
-            href={`mailto:${siteConfig.email}`}
-            className="text-accent hover:underline"
-          >
-            {siteConfig.email}
-          </a>
-          .
-        </p>
         <ContactForm />
       </Section>
     </>
