@@ -3,7 +3,7 @@
 
 export const portfolioCaseStudy = {
   title: "Interactive CV Website",
-  subtitle: "This site",
+  subtitle: "This site, July 2026 - October 2026",
   repo: "https://github.com/DeGro19/Portfolio",
   summary:
     "The site you are reading. Built from scratch rather than from a template, so that it works as a demonstration instead of a description: the headers are hardened, the contact form is defended, the decisions are documented, and the code is public.",

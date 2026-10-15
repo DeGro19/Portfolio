@@ -166,7 +166,7 @@ export const projects = [
   },
   {
     title: "Interactive CV Website",
-    subtitle: "This site, built from scratch",
+    subtitle: "This site, July 2026 - October 2026",
     summary:
       "A portfolio built to demonstrate rather than describe: hardened response headers, a defended contact form, and every decision documented in the public repository.",
     points: [
