@@ -23,7 +23,7 @@ export const siteConfig = {
   github: "https://github.com/DeGro19",
   linkedin: "https://www.linkedin.com/in/deon-grover-447273291",
   // Used for <title>, Open Graph tags and the sitemap.
-  url: "https://example.com",
+  url: "https://portfolio-nine-roan-3b8pahbp36.vercel.app",
   description:
     "Cybersecurity graduate specialising in vulnerability detection, offensive security tooling and cloud application security.",
 } as const;
