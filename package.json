@@ -8,9 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "typegen": "next typegen"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",
