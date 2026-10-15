@@ -70,7 +70,7 @@ export default function HomePage() {
               />
             </a>
             <a
-              href={`mailto:${siteConfig.email}`}
+              href="#contact"
               className="surface hover:border-accent hover:text-accent inline-flex items-center rounded-full px-6 py-3 font-medium backdrop-blur transition-colors"
             >
               Get in touch

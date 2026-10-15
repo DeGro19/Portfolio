@@ -37,13 +37,13 @@ get their own preview URL.
 
 ## 3. Environment variables
 
-In **Project → Settings → Environment Variables**, for Production *and*
+In **Project → Settings → Environment Variables**, for Production _and_
 Preview:
 
-| Name | Value | Needed for |
-| --- | --- | --- |
+| Name             | Value                                  | Needed for            |
+| ---------------- | -------------------------------------- | --------------------- |
 | `RESEND_API_KEY` | key from <https://resend.com/api-keys> | Contact form delivery |
-| `CONTACT_FROM` | `Portfolio <noreply@yourdomain.com>` | Sender address |
+| `CONTACT_FROM`   | `Portfolio <noreply@yourdomain.com>`   | Sender address        |
 
 Without `RESEND_API_KEY` the form returns a clear "email me directly" message
 rather than failing silently, so the site still works — the form just cannot
