@@ -3,7 +3,7 @@
 
 export const sqliCaseStudy = {
   title: "Enhancing SQL Injection Detection in OWASP ZAP",
-  subtitle: "BSc dissertation, Keele University, September 2024 - May 2025",
+  subtitle: "BSc dissertation, Keele University, September 2024 - July 2025",
   repo: "https://github.com/DeGro19/Enhancing-SQL-Injection-Vulnerability-Detection-in-Open-Source-Scanners-using-Payload-Fuzzing",
   summary:
     "OWASP ZAP's default payloads find textbook SQL injection reliably and miss advanced, encoded and time-based vectors. I built a context-aware payload library of 1,429 payloads and adaptive fuzzing logic to close that gap, then measured the difference against a controlled WebGoat testbed.",

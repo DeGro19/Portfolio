@@ -151,7 +151,7 @@ export const extracurricular = [
 export const projects = [
   {
     title: "SQLi Detection Enhancement in OWASP ZAP",
-    subtitle: "Dissertation, September 2024 - May 2025",
+    subtitle: "Dissertation, September 2024 - July 2025",
     summary:
       "A custom payload fuzzing library extending OWASP ZAP's SQL injection detection, validated against WebGoat.",
     points: [
