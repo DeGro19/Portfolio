@@ -5,7 +5,7 @@ export const about = {
   paragraphs: [
     "I'm a cybersecurity graduate from Keele University, where I finished in July 2025 with a BSc Honours Degree in Computer Science, Cyber Security, graded 1st Class. My work sits where offensive security meets tooling. I find how web applications fail, then build something that catches it the next time.",
     "I spent my summer breaks working through IBM's cybersecurity track rather than waiting until after the degree: seven certifications covering threat intelligence, penetration testing, incident response and forensics, network security and database vulnerabilities, and breach response case studies.",
-    "That same instinct drove my dissertation. Default OWASP ZAP scans handle textbook SQL injection well and struggle against encoded, time-based and nested payloads, so I built a context-aware payload library to close the gap: Boolean logic, time delays, nested queries and obfuscation via Base64, Unicode and hexadecimal. Validated against WebGoat, it found 9% more injection vulnerabilities than the default configuration. It won Best Poster at Keele Town Hall, was nominated for Student of the Year 2025, and is being co-published with Dr. Amro Al-Said Ahmad.",
+    "That same instinct drove my dissertation. Default OWASP ZAP scans handle textbook SQL injection well and struggle against encoded, time-based and nested payloads, so I built a context-aware payload library to close the gap: Boolean logic, time delays, nested queries and obfuscation via Base64, Unicode and hexadecimal. Validated against WebGoat, it found 218% more injection vulnerabilities than the default configuration, 388 detections against 122. It won Best Poster at Keele Town Hall, was nominated for Student of the Year 2025, and is being co-published with Dr. Amro Al-Said Ahmad.",
     "Since graduating I have kept building. I completed online courses in cloud computing and AI, and earned Microsoft's AZ-204 (Azure Developer Associate) through hands-on work across identity and access management, secrets handling in Key Vault, event-driven architecture and application monitoring. Application-layer security does not count for much if the cloud underneath it is misconfigured. I also took part in Microsoft's two-day Agentic AI Hackathon in June 2026, building multi-agent applications on Microsoft Foundry with Azure OpenAI and the Microsoft Agent Framework, and came away with the AI Agent Master badge.",
     "I'm looking for a Junior Security Analyst role where research-led, cloud-aware methodology is actually useful, somewhere that cares why a detection failed, not just that it did.",
   ],
@@ -16,9 +16,9 @@ export const about = {
       detail: "BSc Computer Science (Cyber Security)",
     },
     {
-      value: "+9%",
+      value: "+218%",
       label: "SQLi detection",
-      detail: "over default OWASP ZAP scans",
+      detail: "388 detections versus 122 on ZAP defaults",
     },
     { value: "8+", label: "Certifications", detail: "Microsoft and IBM" },
     {
@@ -156,7 +156,7 @@ export const projects = [
       "A custom payload fuzzing library extending OWASP ZAP's SQL injection detection, validated against WebGoat.",
     points: [
       "Developed a custom payload fuzzing library to extend SQLi detection capabilities in OWASP ZAP",
-      "Leveraged Python automation to outperform default scan configurations, delivering a +9% improvement in detection rate validated against the WebGoat environment",
+      "Leveraged Python automation to outperform default scan configurations, delivering a 218% increase in detections, 388 versus 122, validated against the WebGoat environment",
       "Conducted comparative analysis exposing structural flaws in default OWASP ZAP payloads versus custom payloads",
       "Awarded Best Poster at Keele Town Hall; nominated Student of the Year 2025",
     ],
