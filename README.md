@@ -37,7 +37,6 @@ checked.
 | Email     | Resend                  | Contact form delivery                                                                                                   |
 | Hosting   | Vercel                  | Static prerendering with Partial Prerendering                                                                           |
 
-
 ---
 
 ## Design
@@ -140,7 +139,8 @@ config.
 
 - Statically prerendered; Partial Prerendering for the dynamic islands
 - Live GitHub data cached for an hour via `cacheLife`, to stay inside the
-  60 requests/hour unauthenticated API limit. Any failure returns an empty
+  60 requests/hour unauthenticated API limit. The page shows the four most
+  recently pushed repos and links to the full list. Any failure returns an empty
   array, so a GitHub outage degrades to the section not rendering rather than
   a broken page
 - Images served through `next/image` (WebP, correct sizes, no layout shift)
@@ -166,6 +166,7 @@ Open <http://localhost:3000>.
 | ---------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `RESEND_API_KEY` | No       | Contact form delivery. Without it, development logs the message to the console instead of sending, so the flow stays testable |
 | `CONTACT_FROM`   | No       | Sender address. Must be a domain verified in Resend                                                                           |
+| `GITHUB_TOKEN`   | No       | Read-only token for the repo list. Adds private repos (unlinked) and raises the GitHub rate limit from 60 to 5,000 an hour    |
 
 ### Scripts
 
